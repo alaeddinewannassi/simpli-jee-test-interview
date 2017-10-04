@@ -7,7 +7,6 @@ import org.testng.annotations.Test;
 
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.when;
 
 /**
  * Created by simplifia on 18/09/17.
