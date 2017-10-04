@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Built-By: Ouannassi
+Class-Path: lib/commons-lang-2.6.jar lib/testng-6.11.jar lib/jcommande
+ r-1.64.jar lib/snakeyaml-1.17.jar
+Build-Jdk: 1.8.0_112
+Created-By: Maven Integration for Eclipse
+Main-Class: Main
+
