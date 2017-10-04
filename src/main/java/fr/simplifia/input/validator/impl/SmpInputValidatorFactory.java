@@ -10,7 +10,10 @@ public class SmpInputValidatorFactory {
     public static SmpInputValidator fromLocale(final Locale locale){
         final SmpInputValidator result;
         switch(locale.getLanguage()){
-            default:
+        case "en" : 
+        		return new SmpNewInputValidator(locale);
+        
+        	default:
                 result = new SmpDefaultInputValidator(locale);
                break;
         }

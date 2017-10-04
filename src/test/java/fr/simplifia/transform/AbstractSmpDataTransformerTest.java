@@ -8,11 +8,11 @@ import static org.mockito.Mockito.when;
 import static org.testng.Assert.*;
 
 
-public class SmpDataTransformerTest {
+public class AbstractSmpDataTransformerTest {
 
     private SmpInputValidator validator;
 
-    public SmpDataTransformerTest(){
+    public AbstractSmpDataTransformerTest(){
         validator = Mockito.mock(SmpInputValidator.class);
         //TODO : mocking strategy
         //when(validator.validateInput(input)).thenReturn();
