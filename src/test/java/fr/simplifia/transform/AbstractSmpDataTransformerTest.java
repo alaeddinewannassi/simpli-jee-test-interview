@@ -1,43 +1,45 @@
 package fr.simplifia.transform;
 
 import fr.simplifia.input.validator.SmpInputValidator;
+import fr.simplifia.transform.impl.SmpNewDataTransformer;
+import junit.framework.TestCase;
 import org.mockito.Mockito;
 import org.testng.annotations.Test;
+import static org.mockito.Matchers.anyString;
+import static org.mockito.Mockito.doNothing;
 
-import static org.mockito.Mockito.when;
-import static org.testng.Assert.*;
+public class AbstractSmpDataTransformerTest extends TestCase{
 
+	private SmpInputValidator validator;
 
-public class AbstractSmpDataTransformerTest {
+	public AbstractSmpDataTransformerTest() {
+		validator = Mockito.mock(SmpInputValidator.class);
+		doNothing().when(validator).validateInput(anyString());
+	}
 
-    private SmpInputValidator validator;
+	@Test
+	public void testTransformOk() throws Exception {
+		SmpDataTransformer transformer = new SmpNewDataTransformer(validator);
+		assertEquals(transformer.transform("t"), "t : Welcome to Simplifia!");
+	}
 
-    public AbstractSmpDataTransformerTest(){
-        validator = Mockito.mock(SmpInputValidator.class);
-        //TODO : mocking strategy
-        //when(validator.validateInput(input)).thenReturn();
-    }
+	@Test(expectedExceptions = NullPointerException.class)
+	public void testTransformNotOk() throws Exception {
+		SmpDataTransformer transformer = new SmpNewDataTransformer(validator);
+		transformer.transform("t");
 
-    @Test
-    public void testTransformOk() throws Exception {
+	}
 
-    }
+	@Test
+	public void testTransformEmpty() throws Exception {
+		SmpDataTransformer transformer = new SmpNewDataTransformer(validator);
+		assertEquals(transformer.transform(""), " : Welcome to Simplifia!");
+	}
 
-    @Test
-    public void testTransformNotOk() throws Exception {
-
-    }
-
-
-    @Test
-    public void testTransformEmpty() throws Exception {
-
-    }
-
-    @Test
-    public void testTransformNull() throws Exception {
-
-    }
-
+	@Test
+	public void testTransformNull() throws Exception {
+		SmpDataTransformer transformer = new SmpNewDataTransformer(validator);
+		assertEquals(transformer.transform(null), "null : Welcome to Simplifia!");
+	}
 
 }
